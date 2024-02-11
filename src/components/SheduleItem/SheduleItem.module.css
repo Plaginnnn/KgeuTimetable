@@ -1,0 +1,66 @@
+.card {
+	width: 100%;
+	max-width: 48rem;
+}
+
+.cardContent {
+	padding: 1.5rem;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+}
+
+.spaceX {
+	gap: 1rem;
+}
+
+.spaceY {
+	gap: 0.25rem;
+}
+
+.avatar {
+	width: 2.5rem;
+	height: 2.5rem;
+}
+
+.image {
+	border-radius: 9999px;
+	height: 2.5rem;
+	width: 2.5rem;
+	aspect-ratio: 1/1;
+	object-fit: cover;
+}
+
+.title {
+	font-size: 1.125rem;
+	font-weight: bold;
+}
+
+.text {
+	font-size: 0.875rem;
+	line-height: 1;
+	color: #6b7280;
+}
+
+/* Добавляем стили для круглых меток */
+.circle {
+	width: 12px;
+	height: 12px;
+	border-radius: 50%; /* Делаем форму круглой */
+	margin-right: 5px; /* Добавляем небольшой отступ между меткой и текстом */
+}
+
+/* Красный цвет для типов 'л.' и 'пр.' */
+.redCircle {
+	background-color: red;
+}
+
+/* Синий цвет для типа 'лаб.' */
+.blueCircle {
+	background-color: blue;
+}
+.greenCircle {
+	background-color: green;
+}

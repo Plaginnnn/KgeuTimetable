@@ -1,0 +1,129 @@
+.custom-calendar {
+	font-family: 'Montserrat', sans-serif;
+	user-select: none;
+	color: #ff0000;
+	background-color: #ffffff;
+	max-width: 800px;
+
+	width: 100%;
+	font-size: 35px;
+	border-radius: 10px; /* Округляем края */
+}
+
+.react-calendar__tile {
+	border-radius: 7px;
+	padding: 0.9em;
+}
+
+.react-calendar__tile--active {
+	color: #fff;
+}
+
+.react-calendar__tile--now {
+	background-color: #000000;
+	color: #fff;
+}
+
+.react-calendar__month-view__weekdays {
+	background-color: #919191;
+	border-radius: 10px;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+	color: #fff;
+}
+
+.react-calendar__navigation {
+	background-color: #00bcd4;
+	border-radius: 10px; /* Округляем края */
+}
+
+.react-calendar__navigation__label {
+	color: #fff;
+}
+
+.react-calendar__navigation__arrow {
+	border: none;
+	background-color: #007c91;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 20px;
+}
+
+.react-calendar__navigation__arrow:hover {
+	background-color: #005a68;
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media screen and (max-width: 600px) {
+	.custom-calendar {
+		font-size: 16px;
+		padding: 0.2em;
+	}
+
+	.react-calendar__tile {
+		padding: 1em;
+	}
+}
+.main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.main-content {
+	display: flex;
+}
+@media (max-width: 1280px) {
+	.main-content {
+		display: flex;
+		flex-direction: column;
+	}
+}
+.container {
+	max-width: 600px; /* Задаем максимальную ширину контейнера */
+	margin: auto; /* Центрируем контейнер по горизонтали */
+}
+
+.card {
+	min-width: 350px; /* Задаем минимальную ширину карточки */
+}
+
+.cardContent {
+	padding: 8px; /* Задаем отступы внутри карточки */
+}
+
+.circle {
+	width: 10px; /* Диаметр круга */
+	height: 10px; /* Диаметр круга */
+	border-radius: 50%; /* Делаем круглый круг */
+	margin-right: 8px; /* Отступ справа от круга */
+}
+
+.redCircle {
+	background-color: red; /* Цвет круга */
+}
+
+.greenCircle {
+	background-color: green; /* Цвет круга */
+}
+
+.blueCircle {
+	background-color: blue; /* Цвет круга */
+}
+
+.scheduleDetails {
+	display: flex; /* Используем flexbox для элементов времени и типа */
+	align-items: center; /* Выравниваем элементы по вертикали */
+	margin-bottom: 4px; /* Отступ между элементами */
+}
+
+.scheduleDetails p {
+	margin: 0; /* Сбрасываем внутренние отступы у абзацев */
+}
+
+@media (max-width: 600px) {
+	.container {
+		max-width: 100%; /* При маленьком экране контейнер занимает всю ширину */
+		padding: 0 16px; /* Добавляем отступы справа и слева */
+	}
+}
