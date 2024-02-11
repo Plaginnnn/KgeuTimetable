@@ -20,30 +20,31 @@ const CalendarMain = () => {
 
 	useEffect(() => {
 		const formattedDate = formatDate(value)
+
+		const fetchSchedule = async date => {
+			try {
+				const response = await axios.get(
+					`http://kgeu.2d.su/api/schedule.php?group=${group}&date=${date}`
+				)
+				if (response.data && response.data.status === 'success') {
+					setScheduleData(response.data.schedule)
+				} else {
+					setScheduleData(null)
+				}
+			} catch (error) {
+				console.error('Error fetching schedule data: ', error)
+				setScheduleData(null)
+			}
+		}
+
 		fetchSchedule(formattedDate)
-	}, [value])
+	}, [value, group]) // Include 'group' in the dependency array
 
 	const formatDate = date => {
 		const year = date.getFullYear()
 		const month = String(date.getMonth() + 1).padStart(2, '0')
 		const day = String(date.getDate()).padStart(2, '0')
 		return `${year}-${month}-${day}`
-	}
-
-	const fetchSchedule = async date => {
-		try {
-			const response = await axios.get(
-				`http://kgeu.2d.su/api/schedule.php?group=${group}&date=${date}`
-			)
-			if (response.data && response.data.status === 'success') {
-				setScheduleData(response.data.schedule)
-			} else {
-				setScheduleData(null)
-			}
-		} catch (error) {
-			console.error('Error fetching schedule data: ', error)
-			setScheduleData(null)
-		}
 	}
 
 	return (
