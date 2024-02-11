@@ -1,3 +1,4 @@
+import Button from '@mui/material-next/Button'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Calendar from 'react-calendar'
@@ -9,13 +10,32 @@ import './customCalendar.css'
 const CalendarMain = () => {
 	const [value, onChange] = useState(new Date())
 	const [selectedDate, setSelectedDate] = useState(null)
-	const [showNavigation, setShowNavigation] = useState(false)
+	const [activeStartDate, setActiveStartDate] = useState(new Date())
 	const [group] = useState('ПЭ-2-21') // Группа задана статически
 	const [scheduleData, setScheduleData] = useState(null)
 
 	const handleCalendarChange = value => {
 		onChange(value)
 		setSelectedDate(value)
+		setActiveStartDate(value)
+	}
+
+	const handlePrevMonthClick = () => {
+		setActiveStartDate(prev => {
+			const previousMonth = new Date(prev)
+			previousMonth.setMonth(previousMonth.getMonth() - 1)
+			onChange(previousMonth)
+			return previousMonth
+		})
+	}
+
+	const handleNextMonthClick = () => {
+		setActiveStartDate(prev => {
+			const nextMonth = new Date(prev)
+			nextMonth.setMonth(nextMonth.getMonth() + 1)
+			onChange(nextMonth)
+			return nextMonth
+		})
 	}
 
 	useEffect(() => {
@@ -24,7 +44,7 @@ const CalendarMain = () => {
 		const fetchSchedule = async date => {
 			try {
 				const response = await axios.get(
-					`https://kgeu.2d.su/api/schedule.php?group=${group}&date=${date}`
+					`http://kgeu.2d.su/api/schedule.php?group=${group}&date=${date}`
 				)
 				if (response.data && response.data.status === 'success') {
 					setScheduleData(response.data.schedule)
@@ -38,7 +58,7 @@ const CalendarMain = () => {
 		}
 
 		fetchSchedule(formattedDate)
-	}, [value, group]) // Include 'group' in the dependency array
+	}, [value, group])
 
 	const formatDate = date => {
 		const year = date.getFullYear()
@@ -49,46 +69,33 @@ const CalendarMain = () => {
 
 	return (
 		<div className='main'>
-			<p>{selectedDate ? selectedDate.toDateString() : 'None'}</p>
-			<div>
-				<button
-					onClick={() =>
-						onChange(prev => {
-							const previousMonth = new Date(prev)
-							previousMonth.setMonth(previousMonth.getMonth() - 1)
-							return previousMonth
-						})
-					}
-				>
-					Previous Month
-				</button>
-				<button
-					onClick={() =>
-						onChange(prev => {
-							const nextMonth = new Date(prev)
-							nextMonth.setMonth(nextMonth.getMonth() + 1)
-							return nextMonth
-						})
-					}
-				>
-					Next Month
-				</button>
-			</div>
-			<div>
-				<button onClick={() => setShowNavigation(prev => !prev)}>
-					Toggle Navigation
-				</button>
-			</div>
-
 			<section className='main-content'>
 				<div>
+					<div className='buttons-container'>
+						<Button className='button-1' onClick={handlePrevMonthClick}>
+							Предыдущий
+						</Button>
+						<p className='text-button'>
+							{selectedDate
+								? new Intl.DateTimeFormat('ru-RU', {
+										year: 'numeric',
+										month: 'long',
+										day: 'numeric',
+								  }).format(selectedDate)
+								: 'None'}
+						</p>
+						<Button className='button-2' onClick={handleNextMonthClick}>
+							Следующий
+						</Button>
+					</div>
 					<Calendar
 						onChange={handleCalendarChange}
 						value={value}
+						activeStartDate={activeStartDate}
 						maxDetail='month'
 						className='custom-calendar'
 						showNeighboringCentury={false}
-						showNavigation={showNavigation}
+						showNavigation={false}
 					/>
 				</div>
 				<div>
