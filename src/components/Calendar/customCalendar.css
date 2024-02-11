@@ -55,9 +55,9 @@
 }
 
 /* Медиа-запрос для мобильных устройств */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1280px) {
 	.custom-calendar {
-		font-size: 16px;
+		font-size: 18px;
 		padding: 0.2em;
 	}
 
@@ -142,5 +142,8 @@
 }
 .text-button {
 	text-align: center;
+	font-size: 17px;
+	font-family: monospace;
+	padding-top: 10px;
 }
 /* Add any additional styles as needed */

@@ -11,7 +11,7 @@ const CalendarMain = () => {
 	const [value, onChange] = useState(new Date())
 	const [selectedDate, setSelectedDate] = useState(null)
 	const [activeStartDate, setActiveStartDate] = useState(new Date())
-	const [group] = useState('ПЭ-2-21') // Группа задана статически
+	const [group] = useState('ПЭ-2-21')
 	const [scheduleData, setScheduleData] = useState(null)
 
 	const handleCalendarChange = value => {
