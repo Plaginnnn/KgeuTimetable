@@ -40,12 +40,12 @@ const SheduleItem = ({
 		<Container maxWidth='lg' className={styles.container}>
 			<Card className={`${styles.card} flex-col`} variant='outlined'>
 				<CardContent className={`${styles.cardContent} p-1`}>
-					<Grid container alignItems='center' spacing={1}>
+					<Grid container alignItems='center' spacing={0}>
 						<Grid item xs={12} md={19}>
-							<Grid container alignItems='center' spacing={2}>
+							<Grid container alignItems='center' spacing={0}>
 								<Grid item>
-									<Stack direction='column' spacing={1}>
-										<Typography variant='h6' fontWeight='bold'>
+									<Stack direction='column' spacing={0.2}>
+										<Typography variant='subtitle1' fontWeight='bold'>
 											{subject}
 										</Typography>
 										<Grid container alignItems='center'>
@@ -72,7 +72,7 @@ const SheduleItem = ({
 								</Grid>
 							</Grid>
 						</Grid>
-						<Grid item xs={12} md={17}>
+						<Grid item xs={11} md={17}>
 							<Typography
 								variant='body2'
 								color='text.secondary'
