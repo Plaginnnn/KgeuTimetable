@@ -24,7 +24,7 @@ const CalendarMain = () => {
 		const fetchSchedule = async date => {
 			try {
 				const response = await axios.get(
-					`http://kgeu.2d.su/api/schedule.php?group=${group}&date=${date}`
+					`https://kgeu.2d.su/api/schedule.php?group=${group}&date=${date}`
 				)
 				if (response.data && response.data.status === 'success') {
 					setScheduleData(response.data.schedule)
