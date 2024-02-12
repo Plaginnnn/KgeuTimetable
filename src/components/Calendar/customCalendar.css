@@ -137,8 +137,10 @@
 .buttons-container {
 	display: flex;
 	justify-content: space-between;
+
+	background-color: rgb(255, 255, 255);
+	border-radius: 30px 30px 10px 10px;
 	/* Adjust width as needed */
-	margin-bottom: 20px;
 }
 .text-button {
 	text-align: center;
@@ -147,3 +149,9 @@
 	padding-top: 10px;
 }
 /* Add any additional styles as needed */
+
+.my-custom-button {
+	font-size: 2rem;
+	transform: rotate(180deg);
+	z-index: ; /* Ваш пользовательский z-index */
+}
